@@ -15,18 +15,14 @@ pipeline {
     }
     
     stage('Unit Tests') {
-      agent {
-        label 'apache'
-      }
+      agent any
       steps {
         sh 'ant -f test.xml -v'
         junit 'reports/result.xml'
       }
     }
     stage('build') {
-      agent {
-        label 'apache'
-      }
+      agent any
       steps {
         sh 'ant -f build.xml -v'
       }
@@ -34,6 +30,7 @@ pipeline {
         success {
           archiveArtifacts artifacts: 'dist/*.jar', fingerprint: true
         }
+      }
       }
     }
 }
