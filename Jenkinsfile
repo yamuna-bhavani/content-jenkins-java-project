@@ -1,4 +1,4 @@
-xpipeline {
+pipeline {
   agent none
 
   environment {
