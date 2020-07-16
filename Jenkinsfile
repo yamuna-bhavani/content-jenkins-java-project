@@ -19,6 +19,7 @@ pipeline {
       steps {
         bat 'ant -f build.xml -v'
       }
+    }
    stage('Sonarqube') {
     environment {
         scannerHome = tool 'sonar-6'
