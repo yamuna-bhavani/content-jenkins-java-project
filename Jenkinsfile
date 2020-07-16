@@ -25,8 +25,8 @@ pipeline {
     }
     steps {
         withSonarQubeEnv('Sonarqube') {
-            //bat label: '', script:'ant sonar -v'
-		bat 'ant sonar -v'
+            bat label: '', script:'ant sonar'
+		//bat 'ant sonar -v'
         }
        
     }
