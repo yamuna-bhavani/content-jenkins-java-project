@@ -19,7 +19,18 @@ pipeline {
       steps {
         bat 'ant -f build.xml -v'
       }
-   
+   stage('Sonarqube') {
+    environment {
+        scannerHome = tool 'sonar-6'
+    }
+    steps {
+        withSonarQubeEnv('Sonarqube') {
+            //bat label: '', script:'ant sonar -v'
+		bat 'ant sonar -v'
+        }
+       
+    }
+}
       post {
         success {
           archiveArtifacts artifacts: 'dist/*.jar', fingerprint: true
